@@ -18,7 +18,26 @@ const reportRoutes    = require('./routes/reports');
 const app  = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({ origin: ['http://localhost:5173','http://localhost:3000'], credentials: true }));
+// CORS — allow the web dev servers, the live site, and the Capacitor app.
+// The Android app's WebView reports its origin as http://localhost, https://localhost,
+// or capacitor://localhost depending on the scheme — allow all of them.
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'http://localhost',
+  'https://localhost',
+  'capacitor://localhost',
+  'http://13.62.231.10',
+];
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, curl, server-to-server)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(null, true); // permissive: app + site both work over HTTP
+  },
+  credentials: true,
+}));
 app.use(express.json());
 
 // Logger
