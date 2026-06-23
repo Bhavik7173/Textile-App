@@ -300,9 +300,9 @@ export default function PrintPreviewPage() {
                 </div>
                 <div style={{ borderBottom:'1px solid #000',padding:'5px 8px' }}>
                   <div style={{ fontWeight:'bold',fontSize:9,marginBottom:4 }}>Bank Details</div>
-                  <div style={{ fontSize:8.5 }}><strong>Bank Name :</strong> {v(co?.bankName)}</div>
-                  <div style={{ fontSize:8.5 }}><strong>Bank A/C :</strong> {v(co?.accountNo)}</div>
-                  <div style={{ fontSize:8.5 }}><strong>Bank IFSC :</strong> {v(co?.ifscCode)}</div>
+                  <div style={{ fontSize:8.5 }}><strong>Bank Name :</strong> {v(inv.bankName || co?.bankName)}</div>
+                  <div style={{ fontSize:8.5 }}><strong>Bank A/C :</strong> {v(inv.accountNo || co?.accountNo)}</div>
+                  <div style={{ fontSize:8.5 }}><strong>Bank IFSC :</strong> {v(inv.ifscCode || co?.ifscCode)}</div>
                 </div>
                 <div style={{ padding:'5px 8px',minHeight:80 }}>
                   <div style={{ fontWeight:'bold',fontSize:9,marginBottom:3 }}>Terms &amp; Condition</div>

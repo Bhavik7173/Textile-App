@@ -310,9 +310,9 @@ td:nth-child(3),td:nth-child(4){text-align:center;}
       <h4>Total Invoice Amount in Words (Rupess)</h4>
       <p>${amountInWords(grandTotal)}</p>
       <h4>Bank Details</h4>
-      <p><b>Bank Name :</b> ${v(company.bankName, '')}</p>
-      <p><b>Bank A/C :</b> ${v(company.accountNo, '')}</p>
-      <p><b>Bank IFSC :</b> ${v(company.ifscCode, '')}</p>
+      <p><b>Bank Name :</b> ${v(invoice.bankName || company.bankName, '')}</p>
+      <p><b>Bank A/C :</b> ${v(invoice.accountNo || company.accountNo, '')}</p>
+      <p><b>Bank IFSC :</b> ${v(invoice.ifscCode || company.ifscCode, '')}</p>
       ${company.upiId ? `
       <h4>UPI Payment</h4>
       <div style="display:flex;align-items:center;gap:8px;margin-top:2px;">
