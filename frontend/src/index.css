@@ -62,11 +62,14 @@
   .badge-overdue { @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-50    text-red-700    border border-red-100;    }
 
   /* Table */
-  .data-table { @apply w-full; }
+  .data-table { @apply w-full; min-width: 640px; }
   .data-table thead tr { @apply border-b border-gray-100; }
   .data-table thead th { @apply px-4 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wide; }
   .data-table tbody tr { @apply border-b border-gray-50 hover:bg-indigo-50/40 transition-colors cursor-pointer; }
   .data-table tbody td { @apply px-4 py-3.5 text-sm text-gray-700; }
+
+  /* Horizontal scroll wrapper for tables on small screens */
+  .table-wrap { @apply w-full overflow-x-auto -mx-1 px-1; -webkit-overflow-scrolling: touch; }
 
   /* Sidebar item */
   .nav-item {

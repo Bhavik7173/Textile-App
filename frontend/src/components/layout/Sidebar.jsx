@@ -75,7 +75,7 @@ const adminNav = [
 ];
 
 // ── Firm Switcher ─────────────────────────────────────────────────────────────
-function FirmSwitcher() {
+function FirmSwitcher({ onNavigate }) {
   const { firms, activeFirm, switchFirm } = useFirm();
   const [open, setOpen] = useState(false);
 
@@ -147,7 +147,7 @@ function FirmSwitcher() {
 }
 
 // ── Sidebar ───────────────────────────────────────────────────────────────────
-export default function Sidebar() {
+export default function Sidebar({ onNavigate }) {
   const { user, logout, isAdmin } = useAuth();
   const navigate  = useNavigate();
   const location  = useLocation();
@@ -158,7 +158,8 @@ export default function Sidebar() {
     return location.pathname.startsWith(to);
   };
 
-  const handleLogout = () => { logout(); navigate('/login'); };
+  const handleNav = () => { if (onNavigate) onNavigate(); };
+  const handleLogout = () => { logout(); navigate('/login'); if (onNavigate) onNavigate(); };
 
   return (
     <aside className="flex flex-col w-64 bg-white border-r border-gray-100 min-h-screen shrink-0 shadow-sm">
@@ -182,7 +183,7 @@ export default function Sidebar() {
           <p className="text-[10px] font-bold text-gray-300 uppercase tracking-widest px-3 mb-2">
             ACTIVE FIRM
           </p>
-          <FirmSwitcher />
+          <FirmSwitcher onNavigate={onNavigate} />
         </div>
 
         {/* ── Nav groups ── */}
@@ -193,7 +194,7 @@ export default function Sidebar() {
             </p>
             <div className="space-y-0.5">
               {group.items.map(({ to, icon: Icon, label }) => (
-                <Link key={to} to={to}
+                <Link key={to} to={to} onClick={handleNav}
                   className={`nav-item ${isActive(to) ? 'nav-item-active' : ''}`}>
                   <Icon size={17} />
                   <span>{label}</span>

@@ -112,7 +112,7 @@ export default function ExpensesPage() {
             <button onClick={() => { setShowForm(false); setEditId(null); }}><X size={18} className="text-gray-400"/></button>
           </div>
           <form onSubmit={handleSubmit}>
-            <div className="grid grid-cols-2 gap-3 mb-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
               <div><label className="label">Date</label><input type="date" required className="input" value={form.date} onChange={setF('date')}/></div>
               <div><label className="label">Category</label><select className="input" value={form.category} onChange={setF('category')}>{CATS.map(c => <option key={c}>{c}</option>)}</select></div>
               <div className="col-span-2"><label className="label">Description *</label><input required className="input" value={form.description} onChange={setF('description')} placeholder="What was purchased/paid"/></div>
@@ -141,7 +141,7 @@ export default function ExpensesPage() {
           </div>
         ) : (
           <>
-            <table className="data-table">
+            <div className="table-wrap"><table className="data-table">
               <thead><tr>
                 <th>Date</th><th>Category</th><th>Description</th>
                 <th>Supplier</th><th>Mode</th>
@@ -168,7 +168,7 @@ export default function ExpensesPage() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table></div>
             <div className="px-4 py-3 border-t border-gray-50 flex justify-end">
               <span className="text-sm font-bold text-gray-700">Total: {formatCurrency(total)}</span>
             </div>

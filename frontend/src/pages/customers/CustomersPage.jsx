@@ -95,7 +95,7 @@ export default function CustomersPage() {
   const CustomerForm = (
     <form onSubmit={handleSave} className="space-y-4">
       {error && <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">{error}</div>}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <CustomerField label="Party / Company name" value={form.name}    onChange={mh('name')}  required span />
         <CustomerField label="Phone"  value={form.phone}  onChange={mh('phone')} placeholder="9876543210" />
         <CustomerField label="Email"  value={form.email}  onChange={mh('email')} type="email" placeholder="party@example.com" />
@@ -143,7 +143,7 @@ export default function CustomersPage() {
           action="Add customer" onAction={openAdd} />
       ) : (
         <div className="card overflow-hidden">
-          <table className="w-full text-sm">
+          <div className="table-wrap"><table className="w-full text-sm" style={{minWidth:'560px'}}>
             <thead className="bg-gray-50 border-b">
               <tr>
                 {['Name','Phone','GST No','Address','Invoices','Outstanding',''].map(h => (
@@ -188,7 +188,7 @@ export default function CustomersPage() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table></div>
         </div>
       )}
 

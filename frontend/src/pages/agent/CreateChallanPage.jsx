@@ -337,7 +337,7 @@ body{background:#fff;font-size:9px;}
       {/* Customer */}
       <div className="card p-5 mb-4">
         <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Customer Details</h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="label">Customer Name (M/s.)</label>
             <input className="input" placeholder="Enter customer name"
@@ -354,7 +354,7 @@ body{background:#fff;font-size:9px;}
       {/* Challan Details */}
       <div className="card p-5 mb-4">
         <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Challan Details</h2>
-        <div className="grid grid-cols-3 gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
           <div>
             <label className="label">Broker</label>
             <input className="input" placeholder="Broker name"
@@ -397,7 +397,7 @@ body{background:#fff;font-size:9px;}
       {/* Grand Totals */}
       <div className="card p-5 mb-4">
         <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Grand Total (Table 1 + Table 2)</h2>
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {[
             { label: headers.col1, val: totCol1, t1: t1c1, t2: t2c1, bg: 'bg-purple-50 dark:bg-purple-900/20', txt: 'text-purple-600 dark:text-purple-400', sub: 'text-purple-400' },
             { label: headers.col2, val: totCol2, t1: t1c2, t2: t2c2, bg: 'bg-blue-50 dark:bg-blue-900/20',     txt: 'text-blue-600 dark:text-blue-400',     sub: 'text-blue-400'   },

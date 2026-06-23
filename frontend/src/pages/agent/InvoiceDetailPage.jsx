@@ -220,7 +220,7 @@ export default function InvoiceDetailPage() {
           )}
 
           {/* Addresses */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               ['Billed to', invoice.billedToLine1, invoice.billedToLine2, invoice.billedToLine3, invoice.billedStateName, invoice.billedStateCode, invoice.billedGSTNo],
               ['Shipped to', invoice.shippedToLine1, invoice.shippedToLine2, invoice.shippedToLine3, invoice.shippedStateName, invoice.shippedStateCode, invoice.shippedGSTNo],
@@ -279,7 +279,7 @@ export default function InvoiceDetailPage() {
           {/* Transport */}
           <div className="card p-5">
             <p className="text-xs font-semibold text-gray-400 uppercase mb-3">Transport details</p>
-            <div className="grid grid-cols-2 gap-x-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8">
               <Row l="Transporter"    v={invoice.transporterName}/>
               <Row l="Mode"           v={invoice.transportationMode}/>
               <Row l="Vehicle No"     v={invoice.vehicleNo}/>

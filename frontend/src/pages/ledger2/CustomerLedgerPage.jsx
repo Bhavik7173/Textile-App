@@ -108,7 +108,7 @@ export default function CustomerLedgerPage() {
 
       {data && (
         <>
-          <div className="grid grid-cols-3 gap-4 mb-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-5">
             <div className="card p-4 text-center">
               <p className="text-xs text-gray-400 uppercase font-semibold mb-1">Total Billed</p>
               <p className="text-2xl font-bold text-gray-900">{formatCurrency(data.totalBilled)}</p>
@@ -127,7 +127,7 @@ export default function CustomerLedgerPage() {
           </div>
 
           <div className="card overflow-hidden">
-            <table className="data-table">
+            <div className="table-wrap"><table className="data-table">
               <thead><tr>
                 <th>Date</th><th>Invoice No</th><th>Item</th>
                 <th className="text-right">Amount</th>
@@ -157,7 +157,7 @@ export default function CustomerLedgerPage() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table></div>
           </div>
         </>
       )}

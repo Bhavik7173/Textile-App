@@ -107,10 +107,10 @@ export default function SettingsPage() {
         </button>
       </div>
 
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
 
         {/* ── Firm List (left) ── */}
-        <div className="col-span-1 space-y-2">
+        <div className="lg:col-span-1 space-y-2">
           <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Your Firms</p>
           {firms.map(firm => (
             <div key={firm._id} className="relative group">
@@ -171,7 +171,7 @@ export default function SettingsPage() {
         </div>
 
         {/* ── Firm Edit Form (right) ── */}
-        <div className="col-span-3">
+        <div className="lg:col-span-3">
           <form onSubmit={handleSave}>
             <div className="card p-5 mb-4">
               <div className="flex items-center justify-between mb-4">
@@ -192,7 +192,7 @@ export default function SettingsPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Field label="Firm Name *"     value={form.name}         onChange={setF('name')}         placeholder="e.g. Om Textile" />
                 <Field label="Business Type"   value={form.businessType} onChange={setF('businessType')} placeholder="e.g. Mfrs. & Dealers in Art Silk" />
                 <Field label="Address" span    value={form.address}      onChange={setF('address')}      placeholder="Full address" />
@@ -205,7 +205,7 @@ export default function SettingsPage() {
 
             <div className="card p-5 mb-4">
               <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-4">Bank Details</h2>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Field label="Bank Name"   value={form.bankName}  onChange={setF('bankName')}  placeholder="HDFC Bank" />
                 <Field label="Account No." value={form.accountNo} onChange={setF('accountNo')} placeholder="Account number" />
                 <Field label="IFSC Code"   value={form.ifscCode}  onChange={setF('ifscCode')}  placeholder="HDFC0001234" />

@@ -95,7 +95,7 @@ export default function ReportsPage() {
 
       {/* Due Alerts */}
       {(alerts.overdue.length > 0 || alerts.dueSoon.length > 0) && (
-        <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           {alerts.overdue.length > 0 && (
             <div className="card p-4">
               <div className="flex items-center gap-2 mb-3">
@@ -170,7 +170,7 @@ export default function ReportsPage() {
                 <StatCard label="Net Profit"      value={formatCurrency(s.profit)}       color={s.profit >= 0 ? 'blue' : 'red'}
                   sub={`Expenses: ${formatCurrency(s.totalExpense)}`} />
               </div>
-              <div className="grid grid-cols-3 gap-3 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-4">
                 <StatCard label="Taxable"  value={formatCurrency(s.totalTaxable)}  color="blue" />
                 <StatCard label="GST"      value={formatCurrency(s.totalTax)}      color="amber" sub={`CGST ${formatCurrency(s.totalCgst)} + SGST ${formatCurrency(s.totalSgst)}`} />
                 <StatCard label="Pending / Overdue" value={`${s.pendingCount} / ${s.overdueCount}`} color={s.overdueCount > 0 ? 'red' : 'amber'} />

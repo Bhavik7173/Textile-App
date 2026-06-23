@@ -103,7 +103,7 @@ function ItemRow({ item, index, total, onUpdate, onRemove, canRemove, billedCode
       </div>
 
       {/* Item name + HSN */}
-      <div className="grid grid-cols-3 gap-3 mb-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-3">
         <div className="col-span-2">
           <label className="label">Item name *</label>
           <input
@@ -161,7 +161,7 @@ function ItemRow({ item, index, total, onUpdate, onRemove, canRemove, billedCode
         </div>
       </div>
       {/* Discount fields */}
-      <div className="grid grid-cols-2 gap-3 mb-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
         <div>
           <label className="label">Discount %</label>
           <input type="number" className="input" value={item.discount}
@@ -364,12 +364,12 @@ export default function CreateInvoicePage() {
         {step === 0 && (
           <div>
             <SectionHeading title="Invoice reference" subtitle="Order and challan numbers" />
-            <div className="grid grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
               <Field label="Order No"   value={form.orderNo}   onChange={makeHandler('orderNo')} />
               <Field label="Challan No" value={form.challanNo} onChange={makeHandler('challanNo')} />
               <Field label="Invoice No" value={form.invoiceNo} onChange={makeHandler('invoiceNo')} required />
             </div>
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
               <Field label="Challan date" value={form.challanDate}  onChange={makeHandler('challanDate')}  type="date" />
               <Field label="Invoice date" value={form.invoiceDate}  onChange={makeHandler('invoiceDate')}  type="date" required />
               <Field label="Due date"      value={form.dueDate}       onChange={makeHandler('dueDate')}      type="date" />
@@ -379,7 +379,7 @@ export default function CreateInvoicePage() {
             </div>
 
             <SectionHeading title="Transport" />
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Field label="Transporter name" value={form.transporterName} onChange={makeHandler('transporterName')} />
               <Field label="Vehicle No"        value={form.vehicleNo}       onChange={makeHandler('vehicleNo')} placeholder="GJ05XX0000" />
               <Field label="Place of supply"   value={form.placeOfSupply}   onChange={makeHandler('placeOfSupply')} />
@@ -429,7 +429,7 @@ export default function CreateInvoicePage() {
               <Field label="Company / Party name" value={form.billedToLine1} onChange={makeHandler('billedToLine1')} required />
               <Field label="Address line 2"        value={form.billedToLine2} onChange={makeHandler('billedToLine2')} placeholder="Street, area" />
               <Field label="City, PIN"             value={form.billedToLine3} onChange={makeHandler('billedToLine3')} />
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <Field label="State name" value={form.billedStateName} onChange={makeHandler('billedStateName')} />
                 <Field label="State code" value={form.billedStateCode} onChange={makeHandler('billedStateCode')} />
                 <Field label="GST No"     value={form.billedGSTNo}     onChange={makeHandler('billedGSTNo')} placeholder="24XXXXX0000X1Z0" />
@@ -448,7 +448,7 @@ export default function CreateInvoicePage() {
                 <Field label="Company / Party name" value={form.shippedToLine1} onChange={makeHandler('shippedToLine1')} />
                 <Field label="Address line 2"        value={form.shippedToLine2} onChange={makeHandler('shippedToLine2')} />
                 <Field label="City, PIN"             value={form.shippedToLine3} onChange={makeHandler('shippedToLine3')} />
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   <Field label="State name" value={form.shippedStateName} onChange={makeHandler('shippedStateName')} />
                   <Field label="State code" value={form.shippedStateCode} onChange={makeHandler('shippedStateCode')} />
                   <Field label="GST No"     value={form.shippedGSTNo}     onChange={makeHandler('shippedGSTNo')} />
@@ -527,7 +527,7 @@ export default function CreateInvoicePage() {
         {step === 3 && (
           <div>
             <SectionHeading title="Bank details" subtitle="Payment collection account" />
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
               <Field label="Bank name"  value={form.bankName}  onChange={makeHandler('bankName')} />
               <Field label="Account No" value={form.accountNo} onChange={makeHandler('accountNo')} />
               <Field label="IFSC code"  value={form.ifscCode}  onChange={makeHandler('ifscCode')} />
@@ -537,7 +537,7 @@ export default function CreateInvoicePage() {
             <SectionHeading title="Review" subtitle="Check before saving" />
             <div className="bg-gray-50 rounded-xl p-5 space-y-3 text-sm">
               {/* Invoice meta */}
-              <div className="grid grid-cols-2 gap-x-8 gap-y-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1">
                 {[
                   ['Invoice No',   form.invoiceNo   || '—'],
                   ['Invoice date', form.invoiceDate || '—'],

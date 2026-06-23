@@ -116,7 +116,7 @@ export default function StockPage() {
             <button onClick={() => setAddModal(true)} className="btn-primary mt-4"><Plus size={15}/> Add First Item</button>
           </div>
         ) : (
-          <table className="data-table">
+          <div className="table-wrap"><table className="data-table">
             <thead><tr>
               <th>Item Name</th><th>HSN</th><th>UOM</th>
               <th className="text-right">Current Stock</th>
@@ -160,7 +160,7 @@ export default function StockPage() {
                 );
               })}
             </tbody>
-          </table>
+          </table></div>
         )}
       </div>
 
@@ -174,11 +174,11 @@ export default function StockPage() {
             </div>
             <form onSubmit={handleAdd} className="space-y-3">
               <div><label className="label">Item Name *</label><input required className="input" value={form.itemName} onChange={setF('itemName')} placeholder="e.g. Turkey Georgette"/></div>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div><label className="label">HSN/SAC</label><input className="input" value={form.hsnSac} onChange={setF('hsnSac')} placeholder="5407"/></div>
                 <div><label className="label">UOM</label><input className="input" value={form.uom} onChange={setF('uom')} placeholder="MTR"/></div>
               </div>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 <div><label className="label">Opening Stock</label><input type="number" step="any" className="input" value={form.quantity} onChange={setF('quantity')}/></div>
                 <div><label className="label">Min Stock</label><input type="number" step="any" className="input" value={form.minQuantity} onChange={setF('minQuantity')}/></div>
                 <div><label className="label">Rate (₹)</label><input type="number" step="any" className="input" value={form.rate} onChange={setF('rate')}/></div>
@@ -204,7 +204,7 @@ export default function StockPage() {
             </div>
             <p className="text-sm text-gray-500 mb-4">Current: <b>{entryModal.item.quantity} {entryModal.item.uom}</b></p>
             <form onSubmit={handleEntry} className="space-y-3">
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div><label className="label">Quantity *</label><input required type="number" step="any" className="input" value={entry.quantity} onChange={setE('quantity')} placeholder="0"/></div>
                 <div><label className="label">Rate (₹)</label><input type="number" step="any" className="input" value={entry.rate} onChange={setE('rate')} placeholder={entryModal.item.rate}/></div>
               </div>
@@ -233,7 +233,7 @@ export default function StockPage() {
             {history.length === 0 ? (
               <p className="text-gray-400 text-sm text-center py-8">No entries yet</p>
             ) : (
-              <table className="data-table">
+              <div className="table-wrap"><table className="data-table">
                 <thead><tr><th>Date</th><th>Type</th><th>Qty</th><th>Rate</th><th>Reason</th><th>Ref</th></tr></thead>
                 <tbody>
                   {history.map(e => (
@@ -247,7 +247,7 @@ export default function StockPage() {
                     </tr>
                   ))}
                 </tbody>
-              </table>
+              </table></div>
             )}
           </div>
         </div>

@@ -38,7 +38,7 @@ export default function LoginPage() {
         <p className="text-white/70 text-lg max-w-sm leading-relaxed">
           GST-compliant invoicing, payment tracking, customer management — everything in one place.
         </p>
-        <div className="mt-12 grid grid-cols-3 gap-6">
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[['500+','Invoices','created'],['100%','GST','compliant'],['24/7','Access','anywhere']].map(([n,l,s]) => (
             <div key={l} className="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
               <p className="text-2xl font-bold">{n}</p>

@@ -190,7 +190,7 @@ export default function AnalyticsPage() {
                   <span className="text-xs text-gray-400">collected</span>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-3 w-full mt-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full mt-4">
                 <div className="bg-green-50 rounded-xl p-3 text-center">
                   <p className="text-xs text-green-600 font-semibold">Collected</p>
                   <p className="text-sm font-bold text-green-700">{formatCurrency(data.collection?.totalPaid||0)}</p>

@@ -41,7 +41,7 @@ export default function LedgerPage() {
       </div>
 
       {/* Summary cards */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         <div className="card p-5">
           <p className="text-sm text-gray-500 mb-1">Total billed</p>
           <p className="text-2xl font-bold text-gray-900">{formatCurrency(total.amount)}</p>
@@ -63,7 +63,7 @@ export default function LedgerPage() {
           subtitle="All invoices are fully paid!" />
       ) : (
         <div className="card overflow-hidden">
-          <table className="w-full text-sm">
+          <div className="table-wrap"><table className="w-full text-sm" style={{minWidth:'560px'}}>
             <thead className="bg-gray-50 border-b">
               <tr>
                 {['Customer','Invoices','Total Billed','Paid','Outstanding','Last Invoice',''].map(h => (
@@ -110,7 +110,7 @@ export default function LedgerPage() {
                 );
               })}
             </tbody>
-          </table>
+          </table></div>
         </div>
       )}
     </div>
