@@ -100,7 +100,9 @@ export default function LoginPage() {
               <div className="space-y-1.5">
                 {[
                   ['Admin','admin@company.com','Admin@1234'],
-                  ['Agent','rahul@company.com','Agent@1234'],
+                  ['Agent','omtextile@company.com','Agent@1234'],
+                  ['Agent','radheyshyam@company.com','Agent@1234'],
+                  ['Agent','riyatextile@company.com','Agent@1234'],
                 ].map(([role, email, pass]) => (
                   <button key={role} type="button"
                     onClick={() => setForm({ email, password: pass })}

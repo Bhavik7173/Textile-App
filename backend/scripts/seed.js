@@ -49,9 +49,9 @@ async function seed() {
   console.log('✅ Seed complete! Login credentials:');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log('  Admin → admin@company.com  / Admin@1234');
-  console.log('  Agent → rahul@company.com  / Agent@1234');
-  console.log('  Agent → priya@company.com  / Agent@1234');
-  console.log('  Agent → suresh@company.com / Agent@1234');
+  console.log('  Agent → Omtextile@company.com  / Agent@1234');
+  console.log('  Agent → radheyshyam@company.com  / Agent@1234');
+  console.log('  Agent → riyatextile@company.com / Agent@1234');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
   await mongoose.disconnect();
 }
