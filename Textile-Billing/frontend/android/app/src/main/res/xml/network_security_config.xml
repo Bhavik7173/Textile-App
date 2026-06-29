@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Allow plain HTTP to the AWS server -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">13.62.231.10</domain>
+        <domain includeSubdomains="true">localhost</domain>
+    </domain-config>
+    <!-- Fallback: allow cleartext generally (since server is HTTP) -->
+    <base-config cleartextTrafficPermitted="true"/>
+</network-security-config>

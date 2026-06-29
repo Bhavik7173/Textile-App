@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: textilepro-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npx vite build
+    staticPublishPath: dist
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
