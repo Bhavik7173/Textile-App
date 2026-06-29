@@ -1,0 +1,9 @@
+{
+  "appId": "com.textilepro.billing",
+  "appName": "TextilePro",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "http",
+    "cleartext": true
+  }
+}

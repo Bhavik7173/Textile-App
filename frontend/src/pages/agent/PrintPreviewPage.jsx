@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Printer, FileDown, Loader2 } from 'lucide-react';
-import { invoiceAPI } from '../../services/api';
+import { invoiceAPI, API_BASE } from '../../services/api';
 import { Spinner } from '../../components/ui';
 import { useFirm } from '../../context/FirmContext';
 
@@ -59,7 +59,7 @@ export default function PrintPreviewPage() {
     setPdfLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const res   = await fetch(`/api/invoices/${id}/pdf`, { headers: { Authorization: `Bearer ${token}` } });
+      const res   = await fetch(`${API_BASE}/invoices/${id}/pdf`, { headers: { Authorization: `Bearer ${token}` } });
       if (!res.ok) throw new Error('failed');
       const blob = await res.blob();
       const url  = URL.createObjectURL(blob);

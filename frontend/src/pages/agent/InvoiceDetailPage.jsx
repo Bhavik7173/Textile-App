@@ -4,7 +4,7 @@ import {
   ArrowLeft, Printer, FileDown, Mail, MessageCircle, Eye, Copy,
   CheckCircle, Clock, AlertTriangle, Building2, Send, X, Loader2
 } from 'lucide-react';
-import { invoiceAPI } from '../../services/api';
+import { invoiceAPI, API_BASE } from '../../services/api';
 import PaymentPanel from '../../components/PaymentPanel';
 import NotesReminder from '../../components/NotesReminder';
 import { StatusBadge, Spinner, Modal } from '../../components/ui';
@@ -71,7 +71,7 @@ export default function InvoiceDetailPage() {
     setPdfLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const resp  = await fetch(`/api/invoices/${id}/pdf`, {
+      const resp  = await fetch(`${API_BASE}/invoices/${id}/pdf`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!resp.ok) throw new Error('PDF generation failed');

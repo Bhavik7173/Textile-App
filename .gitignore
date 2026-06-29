@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+.idea/
+*.log
+backend/pdfs/*.pdf
+frontend/dist/
+frontend/android/

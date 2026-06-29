@@ -1,6 +1,11 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: '/api' });
+// In the browser (served by Nginx) this stays '/api'.
+// In the Capacitor .apk build, set VITE_API_URL to the full server URL,
+// e.g. https://yourdomain.com/api  (or http://13.62.231.10/api)
+export const API_BASE = import.meta.env.VITE_API_URL || '/api';
+
+const api = axios.create({ baseURL: API_BASE });
 
 api.interceptors.request.use(cfg => {
   const token = localStorage.getItem('token');
@@ -66,7 +71,7 @@ export const utilAPI = {
   exportExcel:   (params) => {
     const token = localStorage.getItem('token');
     const qs = new URLSearchParams(params).toString();
-    window.open(`/api/util/export/excel?${qs}&token=${token}`, '_blank');
+    window.open(`${API_BASE}/util/export/excel?${qs}&token=${token}`, '_blank');
   },
 };
 
@@ -94,7 +99,7 @@ export const reportAPI = {
   customerLedger: (p) => api.get('/reports/customer-ledger', { params: p }),
   gstr1Export: (firmId, month, year) => {
     const token = localStorage.getItem('token');
-    window.open(`/api/reports/gstr1?firmId=${firmId}&month=${month}&year=${year}&token=${token}`, '_blank');
+    window.open(`${API_BASE}/reports/gstr1?firmId=${firmId}&month=${month}&year=${year}&token=${token}`, '_blank');
   },
 };
 
@@ -113,7 +118,7 @@ export const challanAPI = {
   delete:  (id) => api.delete(`/challans/${id}`),
   downloadPDF: async (id, filename) => {
     const token = localStorage.getItem('token');
-    const res   = await fetch(`/api/challans/${id}/pdf`, {
+    const res   = await fetch(`${API_BASE}/challans/${id}/pdf`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     if (!res.ok) throw new Error('Failed to generate challan PDF');
