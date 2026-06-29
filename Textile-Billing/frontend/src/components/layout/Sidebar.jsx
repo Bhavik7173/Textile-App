@@ -155,6 +155,10 @@ export default function Sidebar({ onNavigate }) {
 
   const isActive = (to) => {
     if (to === '/dashboard') return location.pathname === to;
+    if (to === '/invoices/new') return location.pathname === '/invoices/new';
+    if (to === '/challans/new') return location.pathname === '/challans/new';
+    if (to === '/invoices') return location.pathname.startsWith('/invoices') && location.pathname !== '/invoices/new';
+    if (to === '/challans') return location.pathname.startsWith('/challans') && location.pathname !== '/challans/new';
     return location.pathname.startsWith(to);
   };
 
@@ -162,16 +166,16 @@ export default function Sidebar({ onNavigate }) {
   const handleLogout = () => { logout(); navigate('/login'); if (onNavigate) onNavigate(); };
 
   return (
-    <aside className="flex flex-col w-64 bg-white border-r border-gray-100 min-h-screen shrink-0 shadow-sm">
+    <aside className="flex flex-col w-64 bg-white dark:bg-gray-900 border-r border-gray-100 dark:border-gray-800 min-h-screen shrink-0 shadow-sm">
       {/* Brand */}
-      <div className="flex items-center gap-3 px-6 py-5 border-b border-gray-100">
+      <div className="flex items-center gap-3 px-6 py-5 border-b border-gray-100 dark:border-gray-800">
         <div className="w-9 h-9 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-xl
                         flex items-center justify-center shadow-md shadow-indigo-200">
           <Layers size={18} className="text-white" />
         </div>
         <div>
-          <p className="font-bold text-gray-900 leading-tight">TextilePro</p>
-          <p className="text-gray-400 text-xs">Billing System</p>
+          <p className="font-bold text-gray-900 dark:text-white leading-tight">TextilePro</p>
+          <p className="text-gray-400 dark:text-gray-500 text-xs">Billing System</p>
         </div>
       </div>
 
@@ -189,7 +193,7 @@ export default function Sidebar({ onNavigate }) {
         {/* ── Nav groups ── */}
         {navGroups.map((group) => (
           <div key={group.section}>
-            <p className="text-[10px] font-bold text-gray-300 uppercase tracking-widest px-3 mb-2">
+            <p className="text-[10px] font-bold text-gray-300 dark:text-gray-600 uppercase tracking-widest px-3 mb-2">
               {group.section}
             </p>
             <div className="space-y-0.5">
@@ -207,17 +211,17 @@ export default function Sidebar({ onNavigate }) {
 
       {/* User */}
       <div className="px-4 pb-5">
-        <div className="bg-gray-50 rounded-2xl p-3 flex items-center gap-3">
+        <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-3 flex items-center gap-3">
           <div className="w-9 h-9 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-xl
                           flex items-center justify-center text-white font-bold text-sm shadow-sm">
             {user?.name?.[0]?.toUpperCase()}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-gray-900 truncate">{user?.name}</p>
+            <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">{user?.name}</p>
             <p className="text-xs text-gray-400 capitalize">{user?.role}</p>
           </div>
           <button onClick={handleLogout} title="Sign out"
-            className="p-1.5 rounded-lg hover:bg-gray-200 text-gray-400 hover:text-red-500 transition-colors">
+            className="p-1.5 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-400 hover:text-red-500 transition-colors">
             <LogOut size={15} />
           </button>
         </div>

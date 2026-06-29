@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { firmAPI } from '../services/api';
 
 const FirmContext = createContext(null);
@@ -7,10 +7,13 @@ export function FirmProvider({ children }) {
   const [firms, setFirms]           = useState([]);
   const [activeFirm, setActiveFirm] = useState(null);
   const [loading, setLoading]       = useState(true);
+  const fetchedRef                  = useRef(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (!token) { setLoading(false); return; }   // not logged in — skip
+    if (!token) { setLoading(false); return; }
+    if (fetchedRef.current) return;
+    fetchedRef.current = true;
 
     firmAPI.list()
       .then(({ data }) => {

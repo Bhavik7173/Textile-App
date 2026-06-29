@@ -25,7 +25,7 @@ function Field({ label, value, onChange, placeholder, type = 'text', span }) {
 }
 
 export default function SettingsPage() {
-  const { firms, activeFirm, switchFirm, refreshFirms } = useFirm();
+  const { firms, activeFirm, switchFirm, refreshFirms, loading: firmsLoading } = useFirm();
   const [selected, setSelected]   = useState(null);
   const [form, setForm]           = useState(null);
   const [saving, setSaving]       = useState(false);
@@ -81,6 +81,13 @@ export default function SettingsPage() {
     const remaining = firms.filter(f => f._id !== firm._id);
     if (remaining.length > 0) selectFirm(remaining[0]);
   };
+
+  if (firmsLoading) return (
+    <div className="flex flex-col items-center justify-center py-24 gap-3">
+      <div className="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+      <p className="text-sm text-gray-400">Loading firm settings...</p>
+    </div>
+  );
 
   if (!form) return (
     <div className="flex items-center justify-center py-24">

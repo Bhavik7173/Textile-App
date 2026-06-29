@@ -353,10 +353,14 @@ async function generateInvoicePDF(invoice, company) {
   const filepath = path.join(PDF_DIR, filename);
   const html = buildInvoiceHTML(invoice, company);
 
-  const browser = await puppeteer.launch({
+  const launchOptions = {
     headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
-  });
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--single-process'],
+  };
+  if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+    launchOptions.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+  }
+  const browser = await puppeteer.launch(launchOptions);
 
   try {
     const page = await browser.newPage();
